@@ -1,4 +1,4 @@
-function Fyp8    
+function fyp5    
     % Connect natnet client to optic-track motion capture system
     n=natnet;
     %n.HostIP='192.168.0.102';
@@ -23,6 +23,7 @@ function Fyp8
     r=rateControl(1/dt);%Run Loop In Constant Rate
     drone=1;
     sigma_a=0.5; % standard deviation in Acceleration
+    % standard deviation in position measurement
     sigma_x=2.5;
     sigma_y=2.5;
     sigma_z=2.5;
