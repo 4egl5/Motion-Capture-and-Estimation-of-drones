@@ -15,12 +15,13 @@ function Fyp7
         return
     end
     
-
+    
     % set up loop frequency
     dt=0.8;%loop period
     r=rateControl(1/dt);%Run Loop In Constant Rate
-
+    
     % Initialize Kalman Filter constant / variable
+    drone=1;
     % State Transition Matrix , F
     F=[
     1 0 0 dt 0 0 dt^2/2 0 0;
@@ -36,9 +37,9 @@ function Fyp7
 
     % Initial State, x
     x=[
-        double(n.getFrame.RigidBodies(2).x);
-        double(n.getFrame.RigidBodies(2).y);
-        double(n.getFrame.RigidBodies(2).z);
+        double(n.getFrame.RigidBodies(drone).x);
+        double(n.getFrame.RigidBodies(drone).y);
+        double(n.getFrame.RigidBodies(drone).z);
         0;
         0;
         0;
@@ -313,9 +314,9 @@ function Fyp7
         %1: Measurement
         % measurement vector
         z=[
-            double(data.RigidBodies(2).x);
-            double(data.RigidBodies(2).y);
-            double(data.RigidBodies(2).z);
+            double(data.RigidBodies(drone).x);
+            double(data.RigidBodies(drone).y);
+            double(data.RigidBodies(drone).z);
         ];
         
         if(tmp==1)
